@@ -32,6 +32,14 @@ const User = sequelize.define(
       unique: true,
       allowNull: false,
     },
+    department: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    level: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
   },
   {
     // Other model options go here

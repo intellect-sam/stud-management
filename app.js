@@ -1,4 +1,5 @@
 const express = require('express');
+const register = require('./src/routes/auth/register');
 const { sequelize, testDbConnection } = require('./src/cors/config/db');
 const User = require('./src/cors/models/user');
 
@@ -7,6 +8,9 @@ const port = 3000;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+// routes
+app.use('/register', register);
 
 sequelize.sync().then(() => {
   app.listen(port, () => {
