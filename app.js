@@ -1,7 +1,7 @@
 const express = require('express');
 const register = require('./src/routes/auth/register');
-const { sequelize, testDbConnection } = require('./src/cors/config/db');
-const User = require('./src/cors/models/user');
+const { sequelize, testDbConnection } = require('./src/config/db');
+const User = require('./src/models/user');
 
 const app = express();
 const port = 3000;

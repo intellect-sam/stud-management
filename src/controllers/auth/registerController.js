@@ -1,4 +1,4 @@
-const userSchema = require('../../cors/validation/userValidation');
+const userSchema = require('../../validation/userValidation');
 const registrationService = require('../../services/registrationService');
 
 const registerStudent = async (req, res) => {

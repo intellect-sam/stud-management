@@ -1,4 +1,4 @@
-const User = require('../cors/models/user');
+const User = require('../models/user');
 
 class RegistrationService {
   static async addStudent(userData) {
