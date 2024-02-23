@@ -12,7 +12,7 @@ app.use(express.urlencoded({ extended: true }));
 // routes
 app.use('/register', register);
 
-sequelize.sync().then(() => {
+testDbConnection().then(() => {
   app.listen(port, () => {
     console.log(`listening on port ${port}`);
   });
