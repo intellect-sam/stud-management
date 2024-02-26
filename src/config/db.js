@@ -1,9 +1,6 @@
 require('dotenv').config();
 const { Sequelize, DataTypes } = require('sequelize');
 
-// const sequelize = new Sequelize(
-//   'postgres://intellect:intellect@localhost:5400/students'
-// );
 const sequelize = new Sequelize(
   process.env.DB_NAME,
   process.env.DB_USER,
