@@ -2,7 +2,8 @@ const express = require('express');
 const { Sequelize, DataTypes } = require('sequelize');
 const config = require('./src/config/config');
 const UserService = require('./src/services/userService');
-const userRoutes = require('./src/routes/auth/userRoutes');
+const userRoutes = require('./src/routes/userRoutes');
+const { testDbConnection } = require('./src/config/db.js');
 
 const app = express();
 const port = 3000;
@@ -26,7 +27,8 @@ app.use(express.urlencoded({ extended: true }));
 // Routes
 app.use('/users', userRoutes(userService));
 
-app.listen(port, () => {
-  console.log(`listening on port ${port}`);
+testDbConnection().then(() => {
+  app.listen(port, () => {
+    console.log(`listening on port ${port}`);
+  });
 });
-// testDbConnection().then(() => {});

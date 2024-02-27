@@ -7,6 +7,7 @@ const userSchema = Joi.object().keys({
       tlds: { allow: ['com', 'net'] },
     })
     .required(),
+  username: Joi.string().required(),
   password: Joi.string().required(),
   firstName: Joi.string().min(3).max(30).required(),
   lastName: Joi.string().min(3).max(30).required(),

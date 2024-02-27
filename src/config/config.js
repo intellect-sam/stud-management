@@ -1,27 +1,12 @@
-const dotenv = require('dotenv');
-dotenv.config();
+const mongoose = require('mongoose');
+require('dotenv').config();
 
-module.exports = {
-  development: {
-    username: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
-    database: process.env.DB_NAME,
-    host: process.env.DB_HOST,
-    dialect: 'postgres',
-    logging: console.log,
-  },
-  test: {
-    username: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
-    database: process.env.DB_NAME,
-    host: process.env.DB_HOST,
-    dialect: 'postgres',
-  },
-  production: {
-    username: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
-    database: process.env.DB_NAME,
-    host: process.env.DB_HOST,
-    dialect: 'postgres',
-  },
+const connectDB = async () => {
+  try {
+    await mongoose.connect(process.env.DATABASE_URL);
+  } catch (err) {
+    console.error(err);
+  }
 };
+
+module.exports = connectDB;
