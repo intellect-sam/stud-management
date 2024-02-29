@@ -12,8 +12,6 @@ const userSchema = Joi.object().keys({
   firstName: Joi.string().min(3).max(30).required(),
   lastName: Joi.string().min(3).max(30).required(),
   phoneNumber: Joi.string().required(),
-  department: Joi.string().required(),
-  level: Joi.string().required(),
 });
 
 module.exports = userSchema;
