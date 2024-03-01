@@ -1,8 +1,8 @@
 const express = require('express');
+const router = express.Router();
 const UserController = require('../controllers/userController');
 
 const userRoutes = (userService) => {
-  const router = express.Router();
   const controller = new UserController(userService);
 
   router.post('/api/', (req, res) => controller.createUser(req, res));
@@ -13,5 +13,14 @@ const userRoutes = (userService) => {
 
   return router;
 };
+
+// router
+//   .route('/api/')
+//   .post(UserController.createUser)
+//   .get(UserController.getAllUsers)
+//   .get(UserController.updateUser)
+//   .delete(UserController.deleteUser);
+
+// router.route('/api/:id').get(UserController.getAllUsersById);
 
 module.exports = userRoutes;
