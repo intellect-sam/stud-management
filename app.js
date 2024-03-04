@@ -6,11 +6,9 @@ const corsOptions = require('./src/config/corsOptions');
 // const verifyJWT = require('./src/middleware/verifyJWT');
 const cookieParser = require('cookie-parser');
 const credentials = require('./src/middleware/credentials');
-const userRoutes = require('./src/routes/userRoutes');
-const UserService = require('./src/services/userService');
+const register = require('./src/routes/auth/userRoutes');
 const mongoose = require('mongoose');
 const connectDB = require('./src/config/db');
-// const { testDbConnection } = require('./src/config/db.js');
 
 const PORT = process.env.PORT || 3000;
 
@@ -29,10 +27,8 @@ app.use(express.urlencoded({ extended: true }));
 // middleware for cookie
 app.use(cookieParser());
 
-const userServicesInstance = new UserService();
-
-const userRouter = userRoutes(userServicesInstance); // Routes
-app.use('/users', userRouter);
+// routes
+app.use('/register', register);
 
 mongoose.connection.once('open', () => {
   console.log('Connected to MongoDB');

@@ -14,4 +14,4 @@ const userSchema = Joi.object().keys({
   phoneNumber: Joi.string().required(),
 });
 
-module.exports = userSchema;
+module.exports = { userSchema };

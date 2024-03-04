@@ -10,10 +10,6 @@ const userSchema = new Schema({
     type: String,
     require: true,
   },
-  role: {
-    type: Number,
-    default: 8150,
-  },
   password: {
     type: String,
     required: true,
@@ -24,3 +20,5 @@ const userSchema = new Schema({
   refreshToken: String,
   loginCode: Number,
 });
+
+module.exports = mongoose.model('User', userSchema);
