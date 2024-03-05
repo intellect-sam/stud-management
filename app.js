@@ -7,6 +7,7 @@ const corsOptions = require('./src/config/corsOptions');
 const cookieParser = require('cookie-parser');
 const credentials = require('./src/middleware/credentials');
 const register = require('./src/routes/auth/userRoutes');
+const checkin = require('./src/routes/auth/checkinRoute');
 const mongoose = require('mongoose');
 const connectDB = require('./src/config/db');
 
@@ -29,6 +30,7 @@ app.use(cookieParser());
 
 // routes
 app.use('/register', register);
+app.use('/check-in', checkin);
 
 mongoose.connection.once('open', () => {
   console.log('Connected to MongoDB');

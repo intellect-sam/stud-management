@@ -1,4 +1,5 @@
 const User = require('../../models/user');
+const bcrypt = require('bcrypt');
 
 class RegisterService {
   static async createUser(userData) {
@@ -12,7 +13,11 @@ class RegisterService {
     }
 
     // Create the user
-    const createdUser = await User.create(userData);
+    const hashedPass = await bcrypt.hash(userData.password, 10);
+    const createdUser = await User.create({
+      ...userData,
+      password: hashedPass,
+    });
 
     return createdUser;
   }
