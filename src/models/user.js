@@ -25,8 +25,8 @@ const User = mongoose.model('User', userSchema);
 
 const checkInOutSchema = new Schema({
   email: String,
-  timeAndDateIn: { type: Date, default: Date.now },
-  timeAndDateOut: { type: Date, default: Date.now },
+  timeAndDateIn: { type: Date, default: null },
+  timeAndDateOut: { type: Date, default: null },
 });
 
 const CheckInOut = mongoose.model('CheckInOut', checkInOutSchema);

@@ -25,7 +25,7 @@ class CheckIn {
     // create the checkin
     const checkin = await CheckInOut.create({
       email,
-      timeAndDateIn: new Date(),
+      timeAndDateIn: new Date().toLocaleString(),
     });
 
     return checkin;
