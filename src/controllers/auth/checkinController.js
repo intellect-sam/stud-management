@@ -14,8 +14,14 @@ const handleCheckIn = async (req, res) => {
       },
     });
   } catch (error) {
-    console.error('Error during login:', error);
-    res.status(401).json({ message: 'Invalid email or password' });
+    if (error.message === 'Invalid Username or Password') {
+      res.status(401).json({ message: 'Invalid email or password' });
+    } else if (error.message.includes('already')) {
+      res.status(409).json({ message: 'User already checked in' });
+    } else {
+      // Handle other errors as needed
+      res.status(500).json({ message: 'Internal server error' });
+    }
   }
 };
 
