@@ -21,4 +21,17 @@ const userSchema = new Schema({
   loginCode: Number,
 });
 
-module.exports = mongoose.model('User', userSchema);
+const User = mongoose.model('User', userSchema);
+
+const checkInOutSchema = new Schema({
+  email: String,
+  timeAndDateIn: { type: Date, default: Date.now },
+  timeAndDateOut: { type: Date, default: Date.now },
+});
+
+const CheckInOut = mongoose.model('CheckInOut', checkInOutSchema);
+
+module.exports = {
+  User,
+  CheckInOut,
+};

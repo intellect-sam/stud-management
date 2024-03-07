@@ -1,4 +1,4 @@
-const User = require('../../models/user');
+const { CheckInOut, User } = require('../../models/user');
 const bcrypt = require('bcrypt');
 
 class CheckIn {
@@ -13,7 +13,22 @@ class CheckIn {
       throw new Error('Invalid Username or Password');
     }
 
-    return user;
+    // check if the user is in already
+    const isUserInAlready = await CheckInOut.findOne({
+      email: credentials.email,
+    });
+
+    if (isUserInAlready) {
+      throw new Error(`User ${credentials.email} already`);
+    }
+
+    // create the checkin
+    const checkin = await CheckInOut.create({
+      email,
+      timeAndDateIn: new Date(),
+    });
+
+    return checkin;
   }
 }
 
